@@ -4,7 +4,6 @@ public class EmployeeABC {
     private String nameEmployee;
     private String number;
     private String departmentWork;
-    private String nameCompany;
     public static String nameCompany1;
 
     //dòng lệnh tạo biến static: mục đích  sử dụng để tham chiếu thuộc tính chung của tất cả đối tượng
@@ -20,7 +19,6 @@ public class EmployeeABC {
         this.nameEmployee = nameEmployee;
         this.number = number;
         this.departmentWork = departmentWork;
-        this.nameCompany = nameCompany;
     }
 
     //thể hiện tính bao đóng
@@ -53,16 +51,7 @@ public class EmployeeABC {
         this.departmentWork = departmentWork;
     }
 
-    //thể hiện tính bao đóng
-    public String getNameCompany() {
-        return nameCompany;
-    }
-
-    //thể hiện tính bao đóng
-    public void setNameCompany(String nameCompany) {
-        this.nameCompany = nameCompany;
-    }
-
+//thể hiện tính bao đóng
     public static String getNameCompany1() {
         return nameCompany1;
     }
@@ -77,7 +66,6 @@ public class EmployeeABC {
                 "nameEmployee='" + nameEmployee + '\'' +
                 ", number='" + number + '\'' +
                 ", departmentWork='" + departmentWork + '\'' +
-                ", nameCompany='" + nameCompany + '\'' +
                 ", nameCompany1='" + nameCompany1 + '\'' +
                 '}';
     }

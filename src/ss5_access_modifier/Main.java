@@ -7,7 +7,6 @@ public class Main {
         employeeABC.setNameEmployee("Hải");
         employeeABC.setNumber("0905 999 999");
         employeeABC.setDepartmentWork("văn phòng");
-        employeeABC.setNameCompany("ABC");
         EmployeeABC.setNameCompany1("ABC vip");
         System.out.println(employeeABC.toString());
     }
