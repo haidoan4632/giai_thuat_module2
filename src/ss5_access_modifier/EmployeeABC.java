@@ -63,6 +63,14 @@ public class EmployeeABC {
         this.nameCompany = nameCompany;
     }
 
+    public static String getNameCompany1() {
+        return nameCompany1;
+    }
+
+    public static void setNameCompany1(String nameCompany1) {
+        EmployeeABC.nameCompany1 = nameCompany1;
+    }
+
     @Override
     public String toString() {
         return "EmployeeABC{" +
@@ -70,7 +78,7 @@ public class EmployeeABC {
                 ", number='" + number + '\'' +
                 ", departmentWork='" + departmentWork + '\'' +
                 ", nameCompany='" + nameCompany + '\'' +
-                ", nameEmployee1='" + nameCompany1 + '\'' +
+                ", nameCompany1='" + nameCompany1 + '\'' +
                 '}';
     }
 }
