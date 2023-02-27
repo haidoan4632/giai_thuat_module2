@@ -1,9 +1,9 @@
-package ss7_abstract_class_interface;
+package ss7edit_abstract_class_interface;
 
-public abstract class Book {
-private String nameBook;
-private String publisher;
-private String publishingYear;
+public class Book {
+    private String nameBook;
+    private String publisher;
+    private String publishingYear;
 
     public Book() {
     }
@@ -40,10 +40,8 @@ private String publishingYear;
 
     @Override
     public String toString() {
-        return "" +
-                "nameBook='" + nameBook + '\'' +
+        return "nameBook='" + nameBook + '\'' +
                 ", publisher='" + publisher + '\'' +
-                ", publishingYear='" + publishingYear + '\'' +
-                '}';
+                ", publishingYear='" + publishingYear + '\'';
     }
 }

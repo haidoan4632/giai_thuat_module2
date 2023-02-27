@@ -1,13 +1,12 @@
 package ss7_abstract_class_interface;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SocialBook extends Book implements ISocialBook {
     private String author;
 
-    List<SocialBook[]> socialBookList = new ArrayList<SocialBook[]>();
+    List<SocialBook> socialBookList = new ArrayList<SocialBook>();
 
     public SocialBook() {
     }
@@ -23,18 +22,18 @@ public class SocialBook extends Book implements ISocialBook {
     public String toString() {
         return "SocialBook{" +
                 "author='" + author + '\'' +
-                "} " + super.toString();
+                " " + super.toString();
     }
 
     @Override
-    public void add(SocialBook[] socialBook) {
+    public void add(SocialBook socialBook) {
         socialBookList.add(socialBook);
     }
 
     @Override
     public void display() {
-        for (SocialBook[] socialBook : socialBookList) {
-            System.out.println(Arrays.toString(socialBook) +"\n");
+        for (SocialBook socialBook : socialBookList) {
+            System.out.println(socialBook.toString());
         }
     }
 }
