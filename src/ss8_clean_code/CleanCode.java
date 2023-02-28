@@ -1,10 +1,18 @@
 package ss8_clean_code;
-
     public class CleanCode {
+        public int sum(int num1, int num2, int num3) {
+            int sum = num1 + num2 + num3;
+            return sum;
+        }
+
+        private void employeeDetails(String name, String age, String awards, String ctc, String experience) {
+            System.out.println("{" + name + " " + age + " " + awards + " " + ctc + " " + experience + "}");
+        }
 
         public boolean isLeapYear(int year) {
             return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
         }
+
         public int getDayOfMonth(int month, int year) {
             switch (month) {
                 case 1:
