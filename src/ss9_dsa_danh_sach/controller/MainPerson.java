@@ -80,7 +80,22 @@ public class MainPerson {
                                 System.out.println("Nhập id giảng viên muốn xóa: ");
                                 String id = scanner.nextLine();
                                 if (teacherService.findById(id) != null) {
-                                    teacherService.remove(id);
+
+                                    do {
+                                        System.out.println("1.Yes");
+                                        System.out.println("2.No");
+                                        int choice4 = Integer.parseInt(scanner.nextLine());
+                                        switch (choice4) {
+                                            case 1:
+                                                teacherService.remove(id);
+                                                break;
+                                            case 2:
+                                                displayMainMenu();
+                                            default:
+                                                System.out.println("Bạn vui lòng nhập lựa chọn phù hợp");
+                                        }
+                                    } while (true);
+
                                 } else {
                                     System.out.println("Không tìm thấy id của giảng viên bạn muốn xóa: ");
                                 }
@@ -89,8 +104,21 @@ public class MainPerson {
                                 System.out.println("2.Xóa học viên: ");
                                 System.out.println("Nhập id học viên muốn xóa: ");
                                 String id1 = scanner.nextLine();
-                                if (teacherService.findById(id1) != null) {
-                                    teacherService.remove(id1);
+                                if (studentService.findById(id1) != null) {
+                                    do {
+                                        System.out.println("1.Yes");
+                                        System.out.println("2.No");
+                                        int choice5 = Integer.parseInt(scanner.nextLine());
+                                        switch (choice5) {
+                                            case 1:
+                                                studentService.remove(id1);
+                                                break;
+                                            case 2:
+                                                displayMainMenu();
+                                            default:
+                                                System.out.println("Bạn vui lòng nhập lựa chọn phù hợp");
+                                        }
+                                    } while (true);
                                 } else {
                                     System.out.println("Không tìm thấy id của học viên bạn muốn xóa: ");
                                 }

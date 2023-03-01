@@ -14,10 +14,10 @@ public class TeacherRepository implements ITeacherRepository {
     }
 
     @Override
-    public GiangVien findById(String id) {
+    public String findById(String id) {
         for (GiangVien i : giangVienList) {
             if (i.getCode() == id) {
-                return i;
+                return id;
             }
         }
         return null;
@@ -31,7 +31,7 @@ public class TeacherRepository implements ITeacherRepository {
     @Override
     public void remove(String id) {
         for (int i = 0; i < giangVienList.size(); i++) {
-            if (giangVienList.get(i).getCode() == id) {
+            if ((giangVienList.get(i).getCode()).equals(id)) {
                 giangVienList.remove(giangVienList.get(i));
             }
         }

@@ -31,7 +31,7 @@ public class StudentRepository implements IStudentRepository {
     @Override
     public void remove(String id) {
         for (int i = 0; i < hocVienList.size(); i++) {
-            if (hocVienList.get(i).getCode() == id) {
+            if ((hocVienList.get(i).getCode()).equals(id)) {
                 hocVienList.remove(hocVienList.get(i));
             }
         }

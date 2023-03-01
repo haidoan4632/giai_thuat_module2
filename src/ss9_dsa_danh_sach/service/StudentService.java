@@ -7,9 +7,9 @@ public class StudentService implements IStudentService {
     StudentRepository studentRepository = new StudentRepository();
 
     @Override
-    public HocVien findById(String id) {
+    public String findById(String id) {
         studentRepository.findById(id);
-        return null;
+        return id;
     }
 
     @Override

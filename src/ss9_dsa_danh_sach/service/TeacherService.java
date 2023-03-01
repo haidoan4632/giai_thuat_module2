@@ -7,9 +7,9 @@ public class TeacherService implements ITeacherService {
     TeacherRepository teacherRepository = new TeacherRepository();
 
     @Override
-    public GiangVien findById(String id) {
+    public String findById(String id) {
         teacherRepository.findById(id);
-        return null;
+        return id;
     }
 
     @Override
