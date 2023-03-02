@@ -5,5 +5,5 @@ import ss10_fruit_magement.model.Fruit;
 public interface IFruitService {
     void display();
 
-    void add(Fruit fruit);
+    void add();
 }
