@@ -1,25 +1,78 @@
 package ss13_search.service;
 
 import ss13_search.model.SpendingClass;
+import ss13_search.repository.ISpendingClassRepository;
+import ss13_search.repository.SpendingClassRepository;
+
+import java.util.Scanner;
 
 public class SpendingClassService implements ISpendingClassService {
+    ISpendingClassRepository spendingClassRepository = new SpendingClassRepository();
+    Scanner scanner = new Scanner(System.in);
+
     @Override
     public void display() {
-
+        spendingClassRepository.display();
     }
 
     @Override
-    public void add(SpendingClass spendingClass) {
-
+    public void add() {
+        System.out.println("Mã chi tiêu: ");
+        String maChiTieu = scanner.nextLine();
+        System.out.println("Tên chi tiêu: ");
+        String nameChiTieu = scanner.nextLine();
+        System.out.println("Ngày chi tiêu: ");
+        String ngayChiTieu = scanner.nextLine();
+        System.out.println("Số tiền chi tiêu: ");
+        String soTienChiTieu = scanner.nextLine();
+        System.out.println("Mô tả thêm: ");
+        String moTaThem = scanner.nextLine();
+        spendingClassRepository.add(new SpendingClass(maChiTieu, nameChiTieu, ngayChiTieu, soTienChiTieu, moTaThem))
+        ;
     }
 
     @Override
-    public void delete(String code) {
-
+    public void delete() {
+        System.out.println("Nhập code cần xóa: ");
+        String codeRemove = scanner.nextLine();
+        spendingClassRepository.delete(codeRemove);
     }
 
     @Override
-    public void edit(String code) {
+    public void edit() {
+        System.out.println("Nhập mã chi tiêu của đối tượng cần chỉnh sửa:");
+        String code1 = scanner.nextLine();
+        String result1 = spendingClassRepository.edit(code1);
+        System.out.println("Chỉnh sửa chi tiêu: ");
+        System.out.println("Mã chi tiêu: ");
+        String maChiTieu = scanner.nextLine();
+        System.out.println("Tên chi tiêu: ");
+        String tenChiTieu = scanner.nextLine();
+        System.out.println("Ngày chi tiêu: ");
+        String ngayChiTieu = scanner.nextLine();
+        System.out.println("soTienChiTieu: ");
+        String soTienChiTieu = scanner.nextLine();
+        System.out.println("Mô tả thêm: ");
+        String moTaThem = scanner.nextLine();
+        SpendingClass spendingClass = new SpendingClass(maChiTieu, tenChiTieu, ngayChiTieu, soTienChiTieu, moTaThem);
+        if (result1 != null) {
+            spendingClassRepository.add(spendingClass);
+        }
+    }
 
+    @Override
+    public void findMaChiTieu() {
+        System.out.println("Nhập mã chi tiêu cần tìm kiếm: ");
+        String maChiTieu = scanner.nextLine();
+        SpendingClass result = spendingClassRepository.findCode(maChiTieu);
+        System.out.println(result);
+    }
+
+    @Override
+    public void findSpendingName() {
+        System.out.println("Nhập tên chi tiêu cần tìm kiếm: ");
+        String nameChiTieu = scanner.nextLine();
+        SpendingClass result = spendingClassRepository.findSpendingName(nameChiTieu);
+        System.out.println(result);
     }
 }

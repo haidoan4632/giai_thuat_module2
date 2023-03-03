@@ -51,7 +51,7 @@ public class Fruit1Repository implements IFruit1Repository {
     }
 
     @Override
-    public void edit(String key, Fruit1 fruit1) {
-
+    public void edit(String key1, Fruit1 fruit2) {
+        map.replace(key1, fruit2);
     }
 }

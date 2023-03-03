@@ -1,13 +1,14 @@
 package ss13_search.service;
 
-import ss13_search.model.SpendingClass;
-
 public interface ISpendingClassService {
     void display();
 
-    void add(SpendingClass spendingClass);
+    void add();
 
-    void delete(String code);
+    void delete();
 
-    void edit(String code);
+    void edit();
+
+    void findMaChiTieu();
+    void findSpendingName();
 }

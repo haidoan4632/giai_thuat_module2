@@ -1,6 +1,6 @@
 package ss13_search.model;
 
-public class SpendingClass {
+public class SpendingClass   {
     private String maChiTieu;
     private String tenChiTieu;
     private String ngayChiTieu;

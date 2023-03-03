@@ -7,9 +7,11 @@ public interface ISpendingClassRepository {
 
     void add(SpendingClass spendingClass);
 
-   SpendingClass findCode(String code);
+    SpendingClass findCode(String code);
 
     void delete(String code);
 
-    void edit(String code);
+    String edit(String code);
+
+    SpendingClass findSpendingName(String SpendingName);
 }
