@@ -17,6 +17,8 @@ public class SpendingClassManager {
             System.out.println("4.Sửa chi tiêu: ");
             System.out.println("5. Tìm kiếm theo mã chi tiêu: ");
             System.out.println("6. Tìm kiếm gần đúng theo tên chi tiêu: ");
+            System.out.println("7.Sắp xếp theo tên");
+            System.out.println("8.Sắp xếp theo số tiền tăng giảm dần, nếu số tiền tiêu giống nhau thì sắp xếp theo tên tăng dần");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -44,6 +46,13 @@ public class SpendingClassManager {
                     spendingClassService.findSpendingName();
                     break;
                 case 7:
+                    System.out.println("Sắp xếp theo tên: ");
+                    spendingClassService.sortName();
+                    break;
+//                case 8:
+//                    System.out.println("Sắp xếp theo số tiền tăng giảm dần, nếu số tiền tiêu giống nhau thì sắp xếp theo tên tăng dần");
+//                    spendingClassService.sortSoTienChi();
+//                    break;
                 default:
                     System.out.println("Cần nhập lựa chọn đúng");
             }

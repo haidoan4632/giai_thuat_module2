@@ -4,6 +4,7 @@ import ss13_search.model.SpendingClass;
 import ss13_search.repository.ISpendingClassRepository;
 import ss13_search.repository.SpendingClassRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class SpendingClassService implements ISpendingClassService {
@@ -72,7 +73,21 @@ public class SpendingClassService implements ISpendingClassService {
     public void findSpendingName() {
         System.out.println("Nhập tên chi tiêu cần tìm kiếm: ");
         String nameChiTieu = scanner.nextLine();
-        SpendingClass result = spendingClassRepository.findSpendingName(nameChiTieu);
-        System.out.println(result);
+        List<SpendingClass> result = spendingClassRepository.findSpendingName(nameChiTieu);
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(result.get(i));
+        }
     }
+
+    @Override
+    public void sortName() {
+        spendingClassRepository.sortName();
+    }
+
+//    @Override
+//    public void sortSoTienChi() {
+//      int result2 = spendingClassRepository.sortSoTienChi();
+//        System.out.println(result2);
+//    }
+
 }

@@ -1,6 +1,8 @@
 package ss13_search.model;
 
-public class SpendingClass   {
+import java.util.Comparator;
+
+public class SpendingClass implements Comparable<SpendingClass>{
     private String maChiTieu;
     private String tenChiTieu;
     private String ngayChiTieu;
@@ -68,4 +70,11 @@ public class SpendingClass   {
                 ", moTaThem='" + moTaThem + '\'' +
                 '}';
     }
+
+
+    @Override
+    public int compareTo(SpendingClass o) {
+        return this.getMaChiTieu().compareTo(o.getMaChiTieu());
+    }
+
 }

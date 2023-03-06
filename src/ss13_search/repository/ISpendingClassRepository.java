@@ -2,6 +2,8 @@ package ss13_search.repository;
 
 import ss13_search.model.SpendingClass;
 
+import java.util.List;
+
 public interface ISpendingClassRepository {
     void display();
 
@@ -13,5 +15,10 @@ public interface ISpendingClassRepository {
 
     String edit(String code);
 
-    SpendingClass findSpendingName(String SpendingName);
+    List<SpendingClass> findSpendingName(String SpendingName);
+
+
+    void sortName();
+
+//    int sortSoTienChi();
 }
