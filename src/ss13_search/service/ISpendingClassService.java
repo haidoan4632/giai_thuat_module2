@@ -12,5 +12,5 @@ public interface ISpendingClassService {
     void findMaChiTieu();
     void findSpendingName();
     void sortName();
-//    void sortSoTienChi();
+    void sortSoTienChi();
 }

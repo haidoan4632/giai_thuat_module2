@@ -3,6 +3,8 @@ package ss13_search.service;
 import ss13_search.model.SpendingClass;
 import ss13_search.repository.ISpendingClassRepository;
 import ss13_search.repository.SpendingClassRepository;
+import ss13_search.utils.IdNotFoundException;
+import ss13_search.utils.UniqueIDException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,15 +30,22 @@ public class SpendingClassService implements ISpendingClassService {
         String soTienChiTieu = scanner.nextLine();
         System.out.println("Mô tả thêm: ");
         String moTaThem = scanner.nextLine();
-        spendingClassRepository.add(new SpendingClass(maChiTieu, nameChiTieu, ngayChiTieu, soTienChiTieu, moTaThem))
-        ;
+        try {
+            spendingClassRepository.add(new SpendingClass(maChiTieu, nameChiTieu, ngayChiTieu, soTienChiTieu, moTaThem));
+        } catch (UniqueIDException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delete() {
         System.out.println("Nhập code cần xóa: ");
         String codeRemove = scanner.nextLine();
-        spendingClassRepository.delete(codeRemove);
+        try {
+            spendingClassRepository.delete(codeRemove);
+        } catch (IdNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -57,7 +66,11 @@ public class SpendingClassService implements ISpendingClassService {
         String moTaThem = scanner.nextLine();
         SpendingClass spendingClass = new SpendingClass(maChiTieu, tenChiTieu, ngayChiTieu, soTienChiTieu, moTaThem);
         if (result1 != null) {
-            spendingClassRepository.add(spendingClass);
+            try {
+                spendingClassRepository.add(spendingClass);
+            } catch (UniqueIDException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -84,10 +97,9 @@ public class SpendingClassService implements ISpendingClassService {
         spendingClassRepository.sortName();
     }
 
-//    @Override
-//    public void sortSoTienChi() {
-//      int result2 = spendingClassRepository.sortSoTienChi();
-//        System.out.println(result2);
-//    }
+    @Override
+    public void sortSoTienChi() {
+     spendingClassRepository.sortSoTienChi();
+    }
 
 }

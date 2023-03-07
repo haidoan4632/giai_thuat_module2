@@ -49,10 +49,10 @@ public class SpendingClassManager {
                     System.out.println("Sắp xếp theo tên: ");
                     spendingClassService.sortName();
                     break;
-//                case 8:
-//                    System.out.println("Sắp xếp theo số tiền tăng giảm dần, nếu số tiền tiêu giống nhau thì sắp xếp theo tên tăng dần");
-//                    spendingClassService.sortSoTienChi();
-//                    break;
+                case 8:
+                    System.out.println("Sắp xếp theo số tiền tăng giảm dần, nếu số tiền tiêu giống nhau thì sắp xếp theo tên tăng dần");
+                    spendingClassService.sortSoTienChi();
+                    break;
                 default:
                     System.out.println("Cần nhập lựa chọn đúng");
             }

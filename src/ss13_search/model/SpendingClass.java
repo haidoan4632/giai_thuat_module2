@@ -74,7 +74,7 @@ public class SpendingClass implements Comparable<SpendingClass>{
 
     @Override
     public int compareTo(SpendingClass o) {
-        return this.getMaChiTieu().compareTo(o.getMaChiTieu());
+        return this.getTenChiTieu().compareTo(o.getTenChiTieu());
     }
 
 }
