@@ -30,13 +30,16 @@ public class SpendingClassRepository implements ISpendingClassRepository {
 
     @Override
     public void add(SpendingClass spendingClass) throws UniqueIDException {
-        for (SpendingClass spendingClass1 : spendingClassList) {
-            if (spendingClass1.getMaChiTieu().equals(spendingClass.getMaChiTieu())) {
-                throw new UniqueIDException("Không thể thêm dữ liệu do mã chi tiêu đã tồn tại, cần nhập mảng chi tiêu không trùng");
+        try {
+            for (SpendingClass spendingClass1 : spendingClassList) {
+                if (spendingClass1.getMaChiTieu().equals(spendingClass.getMaChiTieu())) {
+                    throw new UniqueIDException("Không thể thêm dữ liệu do mã chi tiêu đã tồn tại, cần nhập mảng chi tiêu không trùng");
+                }
             }
+            spendingClassList.add(spendingClass);
+        } catch (UniqueIDException e) {
+            e.printStackTrace();
         }
-        spendingClassList.add(spendingClass);
-
     }
 
     @Override
@@ -51,15 +54,14 @@ public class SpendingClassRepository implements ISpendingClassRepository {
 
     @Override
     public void delete(String code) throws IdNotFoundException {
-        for (SpendingClass spendingClass1 : spendingClassList)
-            if (spendingClass1.getMaChiTieu().equals(code)) {
-                spendingClassList.remove(spendingClass1);
-            }else {
-                throw new IdNotFoundException("Không thể xóa do code không tồn tại trong mảng");
+        for (int i = 0; i < spendingClassList.size(); i++) {
+            if (spendingClassList.get(i).getMaChiTieu().equals(code)) {
+                spendingClassList.remove(spendingClassList.get(i));
+                return;
             }
         }
-//        spendingClassList.removeIf(spendingClass -> (spendingClass.getMaChiTieu()).equals(code));
-//chưa hiểu dòng code comment
+        throw new IdNotFoundException("lỗi");
+    }
 
     @Override
     public String edit(String code) {

@@ -4,5 +4,4 @@ public class IdNotFoundException extends Exception {
     public IdNotFoundException(String error) {
         super(error);
     }
-
 }
