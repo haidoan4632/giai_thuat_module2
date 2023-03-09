@@ -1,15 +1,16 @@
 package ss13_search.model;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class SpendingClass implements Comparable<SpendingClass>{
+public class SpendingClass implements Comparable<SpendingClass>, Serializable {
     private String maChiTieu;
     private String tenChiTieu;
     private String ngayChiTieu;
     private String soTienChiTieu;
     private String moTaThem;
 
-    public SpendingClass() {
+    public SpendingClass()  {
     }
 
     public SpendingClass(String maChiTieu, String tenChiTieu, String ngayChiTieu, String soTienChiTieu, String moTaThem) {

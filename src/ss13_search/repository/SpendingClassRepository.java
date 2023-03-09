@@ -1,33 +1,47 @@
 package ss13_search.repository;
 
+import ss13_search.data.ReadWriteBinaryFile;
+import ss13_search.data.ReadWriteFile;
 import ss13_search.model.SpendingClass;
 import ss13_search.utils.IdNotFoundException;
 import ss13_search.utils.SpendingClassComparator;
 import ss13_search.utils.UniqueIDException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class SpendingClassRepository implements ISpendingClassRepository {
-    final static List<SpendingClass> spendingClassList = new ArrayList<>();
+    static List<SpendingClass> spendingClassList = new ArrayList<>();
+    public static ReadWriteFile readWriteFile = new ReadWriteFile();
+    public static ReadWriteBinaryFile readWriteBinaryFile = new ReadWriteBinaryFile();
 
-    static {
-        spendingClassList.add(new SpendingClass("5", "bo3", "20/14", "8", "đích"));
-        spendingClassList.add(new SpendingClass("1", "bo", "20/10", "8", "không"));
-        spendingClassList.add(new SpendingClass("2", "crush", "20/11", "8", "đạt"));
-        spendingClassList.add(new SpendingClass("4", "bo2", "20/13", "8", "mục"));
-        spendingClassList.add(new SpendingClass("3", "bo1", "20/12", "8", "được"));
-    }
-
+//    static {
+////        spendingClassList.add(new SpendingClass("5", "bo3", "20/14", "8", "đích"));
+////        spendingClassList.add(new SpendingClass("1", "bo", "20/10", "8", "không"));
+////        spendingClassList.add(new SpendingClass("2", "crush", "20/11", "8", "đạt"));
+////        spendingClassList.add(new SpendingClass("4", "bo2", "20/13", "8", "mục"));
+////        spendingClassList.add(new SpendingClass("3", "bo1", "20/12", "8", "được"));
+//        try {
+//            ReadWriteFile.WriteSpendingClass(spendingClassList);
+//            ReadWriteBinaryFile.writeSpendingClassBinaryFile(spendingClassList);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
     @Override
     public void display() {
-
+        try {
+            spendingClassList = ReadWriteFile.ReadSpendingClass();
+            spendingClassList = ReadWriteBinaryFile.readSpendingClassBinaryFile();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         for (SpendingClass spendingClass : spendingClassList) {
             System.out.println(spendingClass);
         }
     }
-
     @Override
     public void add(SpendingClass spendingClass) throws UniqueIDException {
         try {
@@ -37,11 +51,12 @@ public class SpendingClassRepository implements ISpendingClassRepository {
                 }
             }
             spendingClassList.add(spendingClass);
-        } catch (UniqueIDException e) {
+            ReadWriteFile.WriteSpendingClass(spendingClassList);
+            ReadWriteBinaryFile.writeSpendingClassBinaryFile(spendingClassList);
+        } catch (UniqueIDException | IOException e) {
             e.printStackTrace();
         }
     }
-
     @Override
     public SpendingClass findCode(String code) {
         for (SpendingClass spendingClass : spendingClassList) {
@@ -51,14 +66,21 @@ public class SpendingClassRepository implements ISpendingClassRepository {
         }
         return null;
     }
-
     @Override
     public void delete(String code) throws IdNotFoundException {
-        for (int i = 0; i < spendingClassList.size(); i++) {
-            if (spendingClassList.get(i).getMaChiTieu().equals(code)) {
-                spendingClassList.remove(spendingClassList.get(i));
-                return;
+        try {
+            spendingClassList = ReadWriteFile.ReadSpendingClass();
+            spendingClassList = ReadWriteBinaryFile.readSpendingClassBinaryFile();
+            for (int i = 0; i < spendingClassList.size(); i++) {
+                if (spendingClassList.get(i).getMaChiTieu().equals(code)) {
+                    spendingClassList.remove(spendingClassList.get(i));
+                    ReadWriteFile.WriteSpendingClass(spendingClassList);
+                    ReadWriteBinaryFile.writeSpendingClassBinaryFile(spendingClassList);
+                    return;
+                }
             }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         throw new IdNotFoundException("lỗi");
     }
@@ -83,8 +105,6 @@ public class SpendingClassRepository implements ISpendingClassRepository {
         }
         return spendingClassList1;
     }
-
-    //e bị sai chô này. lỗi ngoại lệ của chức năng 6 là indexoutofboundsexception
     @Override
     public void sortName() {
         Collections.sort(spendingClassList);
